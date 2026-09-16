@@ -1,0 +1,138 @@
+# Manually-added, non-academic activities/projects per fixture student.
+
+- student_no: "S2023001"
+  type: "competition"
+  title: "Runner-up, National Kaggle-style Data Analytics Challenge"
+  description: >
+    Built a machine learning pipeline to predict customer churn for a
+    simulated retail dataset; placed 2nd out of 40 teams on the leaderboard.
+  issuer: "Indonesia Data Science Society"
+  start_date: 2025-03-01
+  end_date: 2025-03-15
+  skills_tags: ["machine learning", "feature engineering", "python", "data cleaning"]
+  evidence_url: null
+
+- student_no: "S2023001"
+  type: "certification"
+  title: "Google Data Analytics Professional Certificate"
+  description: >
+    Completed a 6-course program covering data cleaning, analysis,
+    visualization, and R programming for business decision-making.
+  issuer: "Google / Coursera"
+  start_date: 2024-11-01
+  end_date: 2025-01-20
+  skills_tags: ["data visualization", "sql", "r", "business analytics"]
+  evidence_url: null
+
+- student_no: "S2023001"
+  type: "project"
+  title: "Personal project: Sales dashboard for a local MSME"
+  description: >
+    Designed and built an interactive dashboard for a small business owner to
+    track daily sales, inventory turnover, and profit margin trends.
+  issuer: null
+  start_date: 2025-05-01
+  end_date: 2025-06-10
+  skills_tags: ["data visualization and business reporting", "dashboarding", "stakeholder communication"]
+  evidence_url: null
+
+- student_no: "S2023001"
+  type: "organization"
+  title: "Treasurer, Campus Data Science Society"
+  description: >
+    Managed the club's budget and sponsorship funds for two semesters and
+    co-organized a beginner-friendly SQL workshop series for 30+ members.
+  issuer: "President University Data Science Society"
+  start_date: 2024-08-01
+  end_date: 2025-06-01
+  skills_tags: ["event coordination", "budgeting", "sql"]
+  evidence_url: null
+
+- student_no: "S2022014"
+  type: "certification"
+  title: "SAP Certified Application Associate -- SAP S/4HANA"
+  description: >
+    Certified in core configuration and business process modules of SAP
+    S/4HANA, covering procurement, sales, and finance integration.
+  issuer: "SAP"
+  start_date: 2025-02-01
+  end_date: 2025-02-01
+  skills_tags: ["erp", "sap", "supply chain", "business process configuration"]
+  evidence_url: null
+
+- student_no: "S2022014"
+  type: "internship"
+  title: "ERP Implementation Intern"
+  description: >
+    Supported a manufacturing client's ERP rollout: configured production
+    planning and inventory modules, documented business process changes, and
+    trained end users.
+  issuer: "PT Mitra Solusi Digital"
+  start_date: 2025-01-06
+  end_date: 2025-06-30
+  skills_tags: ["erp implementation", "manufacturing resource planning", "change management", "user training"]
+  evidence_url: null
+
+- student_no: "S2023045"
+  type: "organization"
+  title: "Member, Campus IT Student Association"
+  description: >
+    Helped organize two on-campus workshops introducing first-year students
+    to basic web development tools.
+  issuer: "President University IT Student Association"
+  start_date: 2024-09-01
+  end_date: 2025-01-31
+  skills_tags: ["event coordination", "basic web development"]
+  evidence_url: null
+
+- student_no: "S2022007"
+  type: "competition"
+  title: "Winner, Regional RPA Automation Hackathon"
+  description: >
+    Built an intelligent document-processing bot that extracts invoice data
+    and routes exceptions for human review; won first place among 25 teams.
+  issuer: "UiPath Indonesia Community"
+  start_date: 2025-04-10
+  end_date: 2025-04-12
+  skills_tags: ["rpa", "intelligent document processing", "workflow automation", "uipath"]
+  evidence_url: null
+
+- student_no: "S2022007"
+  type: "certification"
+  title: "UiPath Certified RPA Associate"
+  description: >
+    Certified in building, testing, and deploying robotic process automation
+    workflows using UiPath Studio and Orchestrator.
+  issuer: "UiPath"
+  start_date: 2024-12-01
+  end_date: 2024-12-01
+  skills_tags: ["rpa", "process automation", "uipath"]
+  evidence_url: null
+
+- student_no: "S2022007"
+  type: "project"
+  title: "Personal project: Responsible-AI-aware customer service chatbot"
+  description: >
+    Built a rule-augmented chatbot with an explicit fairness and
+    explainability review pass, and wrote a short paper analyzing failure
+    modes and mitigation strategies for a student AI ethics seminar.
+  issuer: null
+  start_date: 2025-02-15
+  end_date: 2025-05-01
+  skills_tags: ["responsible ai", "explainability", "chatbot development", "ai ethics"]
+  evidence_url: null
+
+# Added through actual app use (Add Activity flow), not originally seeded here --
+# captured back into this file so a fresh seed run reproduces the live DB's real
+# state instead of silently dropping it.
+- student_no: "S2023100"
+  type: "project"
+  title: "WasteIQ"
+  description: >
+    Using Flutter for mobile and React.Js for web . for the backend with
+    Python and fastapi.
+  issuer: "President University"
+  start_date: 2026-07-01
+  end_date: 2026-09-01
+  skills_tags: ["Flutter", "Python", "React.Js", "FastAPI"]
+  evidence_url: null

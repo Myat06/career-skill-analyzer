@@ -1,0 +1,48 @@
+@import "tailwindcss";
+
+@theme {
+  --font-sans: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+
+  /* PresConsult AI brand palette, matched to President University's PUIS portal
+     (puis.president.ac.id) and the PU crest: navy + red are the true brand pair,
+     blue/teal/amber are the category-accent colors PUIS uses to color-code cards. */
+  --color-brand-navy: #0f172a;
+  --color-brand-navy-strong: #1e293b;
+  --color-brand-navy-soft: #e8eef5;
+  --color-brand-red: #dc2626;
+  --color-brand-red-soft: #fdecec;
+  --color-brand-blue: #2563eb;
+  --color-brand-blue-soft: #eaf1fd;
+  --color-brand-teal: #0d9488;
+  --color-brand-teal-soft: #e6f5f3;
+}
+
+:root {
+  color-scheme: light;
+}
+
+body {
+  @apply bg-slate-50 text-slate-900 antialiased;
+  font-family: var(--font-sans);
+}
+
+@keyframes panel-in {
+  from {
+    opacity: 0;
+    transform: translateX(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+.animate-panel-in {
+  animation: panel-in 180ms ease-out;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .animate-panel-in {
+    animation: none;
+  }
+}

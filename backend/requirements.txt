@@ -1,0 +1,29 @@
+fastapi
+uvicorn[standard]
+sqlalchemy[asyncio]
+asyncpg
+httpx
+pydantic
+pydantic-settings
+pyyaml
+python-multipart
+pgvector
+pdfplumber
+pymupdf
+rank_bm25
+python-docx
+tiktoken
+numpy
+reportlab
+Pillow
+pytest
+pytest-asyncio
+
+# Pinned (unlike the rest of this file, intentionally) -- LangChain has a
+# documented history of breaking changes across releases, and this is now
+# the only LLM transport layer in the project. Before bumping either pin,
+# reread app/llm/chat.py's options-handling comments, rerun the full test
+# suite, and rerun the manual verification checklist (num_ctx honored,
+# think/latency check) against the real local model.
+langchain-core==1.6.2
+langchain-ollama==1.1.0

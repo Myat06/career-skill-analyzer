@@ -1,0 +1,249 @@
+# Skill-gap matching engine eval set.
+#
+# The regression tests in tests/integration/test_gap_engine_calibration.py
+# only check that an unrelated student scores low and a related one scores
+# meaningfully higher, with generous margins -- a guard against a broken
+# engine, not a real accuracy measurement. This file is the harness for that
+# real measurement: each entry pairs a real seeded fixture student against a
+# real curated role, with one `expected_status` per required unit, to be
+# filled in by someone with actual standing to judge it -- an IS-program
+# advisor, or Sir Ronny (the stakeholder this tool was built for) -- not
+# invented here. Every expected_status below starts `null` (TODO).
+# tests/integration/test_skill_gap_eval_set.py skips any entry where a unit
+# is still null, so this file ships usable at zero labels and can be filled
+# in incrementally without ever failing CI on an unlabeled row.
+#
+# IMPORTANT, found while building this: the live dev database has already
+# drifted from data/seed/activities.yaml. Sari Wulandari (S2023001) and Budi
+# Santoso (S2022014) both have activities defined in that YAML (a Kaggle-
+# style competition placement, a Google certificate, an SAP certification,
+# an ERP internship) that are NOT actually present as Activity rows in the
+# live DB right now -- and Myat Min Thu (S2023100) has a real "WasteIQ"
+# activity that exists ONLY in the live DB, added through actual use of the
+# app, not from any seed file. So: do not trust this file's `notes` field,
+# or activities.yaml, as ground truth for what evidence a student currently
+# has -- query the live DB (or GET /students/{id}/activities) at labeling
+# time and treat whatever it says as current. The notes below describe the
+# live DB state as verified at the time this file was written, not the
+# seed fixture's intent, and may go stale again the same way.
+#
+# To label an entry: read the student's ACTUAL CURRENT completed courses
+# and logged activities (query the live DB directly, or GET
+# /students/{id}/activities and .../enrollments -- not the seed YAML files,
+# see above) and/or resume if one exists, read the role's required SKKNI
+# units' real meaning (SKKNI_2026-103.pdf / app/scoring/skkni_titles.py's
+# English translations), and judge independently whether that student's
+# real evidence demonstrates each unit -- "matched" | "partial" | "missing"
+# -- THEN compare against what the engine actually produced (GET
+# /students/{id}/analyzer/skill-gap, or a script calling
+# app.scoring.gap_engine.analyze_skill_gap directly). Judge first, look
+# second -- labeling with the engine's own answer already in view defeats
+# the point of an independent check. Record reviewed_by/reviewed_at once
+# done.
+#
+# Sampling rationale for the 9 pairs below (chosen to span real variation the
+# engine has to handle correctly, not selected to make it look good):
+# - Every one of the 6 curated roles appears at least once.
+# - A mix of evidence shapes: pairs that are course-only right now (no
+#   activities in the live DB at all), one with genuinely rich activity
+#   evidence (multiple real projects/certifications), and one genuine
+#   cross-domain mismatch (an ERP/SAP-focused transcript against AI-specific
+#   roles -- a real "should mostly score low" case, not a synthetic one).
+# - Different cohort years (2022 and 2023), so course-completion coverage
+#   varies naturally rather than every fixture being a late-stage student.
+
+- student_no: "S2022007"  # Ahmad Fauzan, cohort 2022
+  role_title: "Responsible AI Specialist"
+  reviewed_by: null
+  reviewed_at: null
+  notes: >
+    Has a "Responsible-AI-aware customer service chatbot" personal project
+    (explicit fairness + explainability review pass) plus Information System
+    Assurance and Security coursework -- tests whether activity-driven text
+    evidence and course-driven credit combine sensibly, not just whether
+    either alone works. Verified live: this is the one fixture with
+    genuinely rich, real activity data (4 activities) to draw on.
+  expected_units:
+    - unit_code: "K.62AIN00.019.1"
+      expected_status: null
+    - unit_code: "K.62AIN00.020.1"
+      expected_status: null
+    - unit_code: "K.62AIN00.021.1"
+      expected_status: null
+    - unit_code: "K.62AIN00.022.1"
+      expected_status: null
+    - unit_code: "K.62AIN00.023.1"
+      expected_status: null
+
+- student_no: "S2022007"  # Ahmad Fauzan, cohort 2022
+  role_title: "AI Solution Deployment Engineer"
+  reviewed_by: null
+  reviewed_at: null
+  notes: >
+    RPA Automation Hackathon win + UiPath RPA certification + a "Smoke Test
+    Activity" (end-to-end verification of a feature flow, added through real
+    app usage/testing, not a seed fixture) plus the AI-Powered Enterprise
+    Automation course track (AEA501-505) -- the closest thing this fixture
+    set has to a genuinely strong, multi-source fit for this specific role.
+  expected_units:
+    - unit_code: "K.62AIN00.024.2"
+      expected_status: null
+    - unit_code: "K.62AIN00.025.2"
+      expected_status: null
+    - unit_code: "K.62AIN00.026.2"
+      expected_status: null
+    - unit_code: "K.62AIN00.027.2"
+      expected_status: null
+
+- student_no: "S2023045"  # Dewi Anggraini, cohort 2023
+  role_title: "AI Business & Solution Planner"
+  reviewed_by: null
+  reviewed_at: null
+  notes: >
+    Semester 1-3 core IS courses only (no AI-specific coursework), one
+    real logged activity (organizing IT-association workshops, not
+    AI-related). This role's units map to generic business-process/
+    systems-design core courses per the curated CSV -- the interesting
+    question is whether that curated credit is judged fair by a human
+    reviewer, not just whether the engine applies it consistently.
+  expected_units:
+    - unit_code: "K.62AIN00.001.2"
+      expected_status: null
+    - unit_code: "K.62AIN00.002.2"
+      expected_status: null
+    - unit_code: "K.62AIN00.003.2"
+      expected_status: null
+    - unit_code: "K.62AIN00.004.2"
+      expected_status: null
+
+- student_no: "S2023045"  # Dewi Anggraini, cohort 2023
+  role_title: "AI Data Engineer"
+  reviewed_by: null
+  reviewed_at: null
+  notes: >
+    Same student as above, against a role requiring the Data Science for
+    Business Analytics track (DSB501-504) she hasn't taken, and her one
+    logged activity is unrelated to data engineering -- expected to be the
+    clearest "should mostly score low" case in this set.
+  expected_units:
+    - unit_code: "K.62AIN00.010.2"
+      expected_status: null
+    - unit_code: "K.62AIN00.011.2"
+      expected_status: null
+    - unit_code: "K.62AIN00.012.2"
+      expected_status: null
+    - unit_code: "K.62AIN00.013.2"
+      expected_status: null
+
+- student_no: "S2022014"  # Budi Santoso, cohort 2022
+  role_title: "AI Knowledge Engineer"
+  reviewed_by: null
+  reviewed_at: null
+  notes: >
+    Course-only right now (no activities logged in the live DB) -- an
+    Intelligent Enterprise Systems / ERP-track transcript (his SAP
+    certification and ERP internship exist in the seed YAML but are NOT
+    currently in the live DB, so only his coursework is real evidence
+    today), not AI-specific. A genuine cross-domain mismatch against an
+    AI-knowledge-engineering role -- the real test of whether the engine
+    correctly finds nothing to credit rather than false-crediting adjacent
+    "systems" language.
+  expected_units:
+    - unit_code: "K.62AIN00.005.2"
+      expected_status: null
+    - unit_code: "K.62AIN00.006.2"
+      expected_status: null
+    - unit_code: "K.62AIN00.007.2"
+      expected_status: null
+    - unit_code: "K.62AIN00.008.2"
+      expected_status: null
+    - unit_code: "K.62AIN00.009.2"
+      expected_status: null
+
+- student_no: "S2023001"  # Sari Wulandari, cohort 2023
+  role_title: "AI Data Engineer"
+  reviewed_by: null
+  reviewed_at: null
+  notes: >
+    Course-only right now (no activities logged in the live DB -- her
+    Kaggle-style competition placement, Google Data Analytics certificate,
+    and dashboard project exist in the seed YAML but are NOT currently in
+    the live DB). Has completed the full Data Science for Business
+    Analytics track (DSB501-505), so this tests whether strong course-based
+    credit alone produces a sensible high score with zero activity
+    evidence to draw on.
+  expected_units:
+    - unit_code: "K.62AIN00.010.2"
+      expected_status: null
+    - unit_code: "K.62AIN00.011.2"
+      expected_status: null
+    - unit_code: "K.62AIN00.012.2"
+      expected_status: null
+    - unit_code: "K.62AIN00.013.2"
+      expected_status: null
+
+- student_no: "S2023001"  # Sari Wulandari, cohort 2023
+  role_title: "Generative AI Engineer"
+  reviewed_by: null
+  reviewed_at: null
+  notes: >
+    Same student, against a role her Data Science coursework doesn't
+    obviously cover (prompt engineering, generative-model adaptation) --
+    expected to separate "good at data/ML in general" from "specifically
+    covers this role's units," a distinction the engine must not blur.
+  expected_units:
+    - unit_code: "K.62AIN00.014.1"
+      expected_status: null
+    - unit_code: "K.62AIN00.015.1"
+      expected_status: null
+    - unit_code: "K.62AIN00.016.1"
+      expected_status: null
+    - unit_code: "K.62AIN00.017.1"
+      expected_status: null
+    - unit_code: "K.62AIN00.018.1"
+      expected_status: null
+
+- student_no: "S2023100"  # Myat Min Thu, cohort 2023
+  role_title: "AI Business & Solution Planner"
+  reviewed_by: null
+  reviewed_at: null
+  notes: >
+    Has one real logged activity ("WasteIQ", added through actual use of
+    the app -- not a seed fixture) plus the same course-completion pattern
+    as Sari Wulandari above. Interesting on its own: a live sweep found this
+    student's match_percentage identical to Sari's (a zero-activity
+    student) across all 6 roles, meaning WasteIQ isn't currently verified
+    as evidence for any of these units by the text-evidence step at
+    temperature=0 -- worth an independent human read on whether that's
+    actually correct (WasteIQ may genuinely be irrelevant to these specific
+    units) or a case the engine is under-crediting.
+  expected_units:
+    - unit_code: "K.62AIN00.001.2"
+      expected_status: null
+    - unit_code: "K.62AIN00.002.2"
+      expected_status: null
+    - unit_code: "K.62AIN00.003.2"
+      expected_status: null
+    - unit_code: "K.62AIN00.004.2"
+      expected_status: null
+
+- student_no: "S2023100"  # Myat Min Thu, cohort 2023
+  role_title: "AI Solution Deployment Engineer"
+  reviewed_by: null
+  reviewed_at: null
+  notes: >
+    Same student as above, against the same role Ahmad (above) fits well --
+    a direct contrast pair: same role, one student with rich, clearly
+    on-topic activity evidence (Ahmad's RPA/automation work) and one with a
+    single activity of unclear relevance to THIS role (WasteIQ), to check
+    the engine separates them correctly rather than converging on a similar
+    score regardless of evidence relevance.
+  expected_units:
+    - unit_code: "K.62AIN00.024.2"
+      expected_status: null
+    - unit_code: "K.62AIN00.025.2"
+      expected_status: null
+    - unit_code: "K.62AIN00.026.2"
+      expected_status: null
+    - unit_code: "K.62AIN00.027.2"
+      expected_status: null

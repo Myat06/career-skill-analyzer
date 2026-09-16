@@ -1,0 +1,34 @@
+# Fixture students for the Information Systems program at President University
+# (the program the real curriculum book -- IS_Curriculum_Book_2025.pdf --
+# actually documents). Referenced by student_no in enrollments.yaml and
+# activities.yaml.
+
+- student_no: "S2023001"
+  full_name: "Sari Wulandari"
+  program: "Information Systems"
+  cohort_year: 2023
+  email: "sari.wulandari@student.president.ac.id"
+
+- student_no: "S2022014"
+  full_name: "Budi Santoso"
+  program: "Information Systems"
+  cohort_year: 2022
+  email: "budi.santoso@student.president.ac.id"
+
+- student_no: "S2023045"
+  full_name: "Dewi Anggraini"
+  program: "Information Systems"
+  cohort_year: 2023
+  email: "dewi.anggraini@student.president.ac.id"
+
+- student_no: "S2022007"
+  full_name: "Ahmad Fauzan"
+  program: "Information Systems"
+  cohort_year: 2022
+  email: "ahmad.fauzan@student.president.ac.id"
+
+- student_no: "S2023100"
+  full_name: "Myat Min Thu"
+  program: "Information Systems"
+  cohort_year: 2023
+  email: "myat.thu@student.president.ac.id"

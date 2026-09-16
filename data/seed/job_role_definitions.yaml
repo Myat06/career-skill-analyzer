@@ -1,0 +1,74 @@
+# Curated job roles derived from SKKNI_2026-103.pdf's 27 unit competencies
+# (AI subbidang Knowledge Based System). Loaded by app/seed/seed_data.py,
+# which validates every unit_code below against the units actually parsed
+# from the PDF at ingestion time -- an unknown code fails the seed loudly
+# rather than silently producing a job role with missing requirements.
+
+- role_title: "AI Business & Solution Planner"
+  sector: "Artificial Intelligence"
+  description: >
+    Scopes AI initiatives from business need through technical architecture and
+    project planning -- the earliest-stage role in an AI project's lifecycle.
+  required_unit_codes:
+    - K.62AIN00.001.2
+    - K.62AIN00.002.2
+    - K.62AIN00.003.2
+    - K.62AIN00.004.2
+
+- role_title: "AI Knowledge Engineer"
+  sector: "Artificial Intelligence"
+  description: >
+    Designs, acquires, represents, and validates the knowledge base that
+    underpins a knowledge-based AI solution.
+  required_unit_codes:
+    - K.62AIN00.005.2
+    - K.62AIN00.006.2
+    - K.62AIN00.007.2
+    - K.62AIN00.008.2
+    - K.62AIN00.009.2
+
+- role_title: "AI Data Engineer"
+  sector: "Artificial Intelligence"
+  description: >
+    Prepares the data foundation for AI solutions: labeling procedure design,
+    data analysis, curation, and reconstruction.
+  required_unit_codes:
+    - K.62AIN00.010.2
+    - K.62AIN00.011.2
+    - K.62AIN00.012.2
+    - K.62AIN00.013.2
+
+- role_title: "Generative AI Engineer"
+  sector: "Artificial Intelligence"
+  description: >
+    Develops and evaluates generative-model-based AI solutions, from
+    development strategy through prompt engineering and model adaptation.
+  required_unit_codes:
+    - K.62AIN00.014.1
+    - K.62AIN00.015.1
+    - K.62AIN00.016.1
+    - K.62AIN00.017.1
+    - K.62AIN00.018.1
+
+- role_title: "Responsible AI Specialist"
+  sector: "Artificial Intelligence"
+  description: >
+    Ensures AI solutions meet fairness, explainability, reliability, privacy,
+    and accountability requirements.
+  required_unit_codes:
+    - K.62AIN00.019.1
+    - K.62AIN00.020.1
+    - K.62AIN00.021.1
+    - K.62AIN00.022.1
+    - K.62AIN00.023.1
+
+- role_title: "AI Solution Deployment Engineer"
+  sector: "Artificial Intelligence"
+  description: >
+    Integrates, installs, and maintains AI solution components in production --
+    the operational/MLOps-adjacent role at the end of an AI project's lifecycle.
+  required_unit_codes:
+    - K.62AIN00.024.2
+    - K.62AIN00.025.2
+    - K.62AIN00.026.2
+    - K.62AIN00.027.2
