@@ -1,96 +1,125 @@
-# PresConsult AI
+<div align="center">
 
-An AI-assisted career-readiness consultation tool built for a university
-Internship & Career Center. It combines a student's academic record and
-self-logged activities/achievements with an AI-graded resume review and a
-skill-gap analysis against Indonesia's national **SKKNI** competency
-standards, then turns all of it into consultation deliverables a career
-advisor can actually hand to a student: a chat-based consultation session, a
-multi-section PDF report, and a shareable one-page poster.
+<img src="https://capsule-render.vercel.app/api?type=waving&color=0:6366f1,100:0ea5e9&height=150&section=header&text=PresConsult%20AI&fontSize=42&fontColor=ffffff&animation=fadeIn" />
 
-## What it does
+**AI-assisted career-readiness consultation for university career centers**
 
-- **Resume evaluation** — a student's resume is graded against a real
+<img src="https://readme-typing-svg.herokuapp.com?font=Fira+Code&weight=600&size=18&pause=1000&color=0EA5E9&center=true&vCenter=true&width=700&lines=Resume+rubric+grading+with+quote-verified+evidence;SKKNI+competency-based+skill-gap+analysis;Grounded+AI+consultation+chat;PDF+report+%2B+shareable+poster+generation" alt="Typing SVG" />
+
+<br/>
+
+![Python](https://img.shields.io/badge/Python-3776AB?style=for-the-badge&logo=python&logoColor=white)
+![FastAPI](https://img.shields.io/badge/FastAPI-009688?style=for-the-badge&logo=fastapi&logoColor=white)
+![PostgreSQL](https://img.shields.io/badge/PostgreSQL-316192?style=for-the-badge&logo=postgresql&logoColor=white)
+![Ollama](https://img.shields.io/badge/Ollama-000000?style=for-the-badge&logo=ollama&logoColor=white)
+![React](https://img.shields.io/badge/React-20232A?style=for-the-badge&logo=react&logoColor=61DAFB)
+![TypeScript](https://img.shields.io/badge/TypeScript-3178C6?style=for-the-badge&logo=typescript&logoColor=white)
+![Vite](https://img.shields.io/badge/Vite-646CFF?style=for-the-badge&logo=vite&logoColor=white)
+![TailwindCSS](https://img.shields.io/badge/TailwindCSS-38B2AC?style=for-the-badge&logo=tailwindcss&logoColor=white)
+
+</div>
+
+---
+
+### 📖 Overview
+
+PresConsult AI combines a student's academic record and self-logged
+activities/achievements with an AI-graded resume review and a skill-gap
+analysis against Indonesia's national **SKKNI** competency standards, then
+turns all of it into consultation deliverables a career advisor can actually
+hand to a student: a chat-based consultation session, a multi-section PDF
+report, and a shareable one-page poster.
+
+---
+
+### 🎯 What It Does
+
+- **📄 Resume evaluation** — a student's resume is graded against a real
   7-category university rubric (contact info, education, experience,
   projects, skills, language, personal summary) by a local LLM, with every
   score backed by a verbatim quote pulled from the resume text and validated
   against it before being accepted.
-- **Skill-gap analysis** — for a chosen job role, completed courses are
+- **🧩 Skill-gap analysis** — for a chosen job role, completed courses are
   checked against a curated SKKNI-competency-to-curriculum mapping, and
   resume/activity text is judged against each competency unit's real
   elements (again with quote-verified evidence, not free-form LLM opinion).
   The result is a per-unit match breakdown (matched / partial / missing),
   plus recommended courses to close each gap.
-- **Consultation chat** — a chat interface grounded in the student's actual
-  profile, resume score, and skill-gap results, with a fallback to general
-  career guidance (and verified links to roadmap.sh) for roles outside the
-  curated catalog.
-- **Report & poster generation** — a full consultation PDF and a shareable
-  PNG poster, built from the resume score, skill-gap analysis, and academic/
-  activity evidence, with AI-written narrative sections (executive summary,
-  roadmap, direction, coach message).
-- **Persistent chat history** — consultation sessions are saved per student
-  and can be reopened and continued later.
+- **💬 Consultation chat** — a chat interface grounded in the student's
+  actual profile, resume score, and skill-gap results, with a fallback to
+  general career guidance (and verified links to roadmap.sh) for roles
+  outside the curated catalog.
+- **📊 Report & poster generation** — a full consultation PDF and a
+  shareable PNG poster, built from the resume score, skill-gap analysis, and
+  academic/activity evidence, with AI-written narrative sections (executive
+  summary, roadmap, direction, coach message).
+- **🗂️ Persistent chat history** — consultation sessions are saved per
+  student and can be reopened and continued later.
 
-## Tech stack
+---
 
-**Backend:** FastAPI, PostgreSQL (async SQLAlchemy) with the `pgvector`
-extension for embeddings, [Ollama](https://ollama.com) running locally for
-both chat (`qwen3.5:9b`) and embeddings (`embeddinggemma`), via LangChain's
-Ollama adapters.
+### 🛠️ Tech Stack
 
-**Frontend:** React 19 + Vite + Tailwind CSS 4, a single chat-centric page
-rather than a traditional multi-page dashboard.
+| Layer | Stack |
+| --- | --- |
+| Backend | FastAPI · async SQLAlchemy · PostgreSQL + `pgvector` |
+| AI/LLM | [Ollama](https://ollama.com) (local) — `qwen3.5:9b` chat, `embeddinggemma` embeddings, via LangChain adapters |
+| Frontend | React 19 · Vite · TypeScript · Tailwind CSS 4 — a single chat-centric page, not a multi-page dashboard |
 
-## Project structure
+---
+
+### 📁 Project Structure
 
 ```
 backend/app/
-  api/                 FastAPI routers (students, resumes, job roles, analyzer,
-                        ingestion, health, reports, consultation, chat sessions)
-  scoring/              resume rubric grading, SKKNI skill-gap matching,
-                        grounded narrative generation, consultation chat
-  reporting/            PDF report (reportlab) + PNG poster (Pillow) generation
-  ingestion/            SKKNI/curriculum PDF parsing, chunking, indexing
-  retrieval/            semantic + lexical (BM25) search over ingested chunks
-  resume/               PDF/DOCX/image resume parsing
-  llm/                  chat + embeddings adapters over Ollama
+  api/          FastAPI routers (students, resumes, job roles, analyzer,
+                ingestion, health, reports, consultation, chat sessions)
+  scoring/      resume rubric grading, SKKNI skill-gap matching,
+                grounded narrative generation, consultation chat
+  reporting/    PDF report (reportlab) + PNG poster (Pillow) generation
+  ingestion/    SKKNI/curriculum PDF parsing, chunking, indexing
+  retrieval/    semantic + lexical (BM25) search over ingested chunks
+  resume/       PDF/DOCX/image resume parsing
+  llm/          chat + embeddings adapters over Ollama
   models.py, schemas.py, database.py, config.py
 
 frontend/src/
-  pages/Consultation.tsx        the main chat + context-panel page
-  pages/IngestionAdmin.tsx      ingestion status/admin page
-  components/                   ChatPanel, ContextPanel, upload/role/activity modals
-  api/                           typed API clients per resource
-  *Context.tsx                   student + chat-session state
+  pages/Consultation.tsx     the main chat + context-panel page
+  pages/IngestionAdmin.tsx   ingestion status/admin page
+  components/                ChatPanel, ContextPanel, upload/role/activity modals
+  api/                       typed API clients per resource
+  *Context.tsx                student + chat-session state
 
 data/
-  raw/            source PDFs (SKKNI competency standard, university curriculum book)
-  seed/            fixture students, activities, enrollments, job role definitions,
-                    curated SKKNI-to-curriculum course mapping
-  branding/        university logo used in report/poster output
-  eval/            skill-gap evaluation harness (structural checks; accuracy labels
-                    are filled in by a program advisor, not fabricated)
+  raw/       source PDFs (SKKNI competency standard, university curriculum book)
+  seed/      fixture students, activities, enrollments, job role definitions,
+             curated SKKNI-to-curriculum course mapping
+  branding/  university logo used in report/poster output
+  eval/      skill-gap evaluation harness (structural checks; accuracy labels
+             are filled in by a program advisor, not fabricated)
 ```
 
-## Prerequisites
+---
 
-- PostgreSQL running locally, with the [`pgvector`](https://github.com/pgvector/pgvector)
-  extension available.
-- [Ollama](https://ollama.com) running locally with `qwen3.5:9b` and
-  `embeddinggemma` pulled (`ollama pull qwen3.5:9b && ollama pull embeddinggemma`).
-- Python 3.10+, Node.js 20+.
+### ⚙️ Getting Started
 
-## Setup
+#### Prerequisites
 
-### 1. Database
+- PostgreSQL running locally, with the [`pgvector`](https://github.com/pgvector/pgvector) extension available
+- [Ollama](https://ollama.com) running locally with `qwen3.5:9b` and `embeddinggemma` pulled:
+  ```bash
+  ollama pull qwen3.5:9b && ollama pull embeddinggemma
+  ```
+- Python 3.10+, Node.js 20+
+
+#### 1. Database
 
 ```bash
 createdb career_skill_analyzer
 psql career_skill_analyzer -c "CREATE EXTENSION IF NOT EXISTS vector;"
 ```
 
-### 2. Backend
+#### 2. Backend
 
 ```bash
 cd backend
@@ -132,7 +161,7 @@ frontend is running — the fixture-data seed step still needs the snippet
 above the first time, since seeding validates SKKNI unit codes against
 whatever has already been ingested.)
 
-### 3. Frontend
+#### 3. Frontend
 
 ```bash
 cd frontend
@@ -144,7 +173,9 @@ Open `http://localhost:5173`, pick a fixture student from the student
 switcher, upload a resume and/or pick a target role, and start a
 consultation.
 
-## API overview
+---
+
+### 🔌 API Overview
 
 All routes are prefixed with `/api`.
 
@@ -163,7 +194,9 @@ All routes are prefixed with `/api`.
 Interactive docs are available at `http://localhost:8000/docs` once the
 backend is running.
 
-## Running tests
+---
+
+### 🧪 Running Tests
 
 ```bash
 cd backend && source .venv/bin/activate
@@ -175,7 +208,9 @@ Use `python -m pytest`, not the bare `pytest` script — the bare script's
 default import mode doesn't put `backend/` on `sys.path`, so `import app...`
 fails with `ModuleNotFoundError: No module named 'app'`.
 
-## Known limitations / next steps
+---
+
+### 🚧 Known Limitations / Next Steps
 
 - **No authentication.** The student switcher is a development convenience,
   not an access boundary.
@@ -193,3 +228,13 @@ fails with `ModuleNotFoundError: No module named 'app'`.
   a program advisor reviews and labels expected outcomes.
 - **Image-upload resumes (JPG/PNG) aren't wired in yet** — only PDF/DOCX are
   accepted today.
+
+---
+
+<div align="center">
+
+Built by [Myat Min Thu](https://github.com/Myat06) — Information Systems @ President University
+
+<img src="https://capsule-render.vercel.app/api?type=waving&color=0:6366f1,100:0ea5e9&height=100&section=footer" />
+
+</div>
